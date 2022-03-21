@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AN7IOjPRczxd3uJ0rkwUkDJSRCF5yX6AmRHdwG2ZiHFOM5Qrzy3W2vQuPYHCBNB9BJeUNhIjdpGplXoeDvzIkA==",
+  "dgSpecHash": "chjsK8T3lk6uC99Tyefq1R0TyfBM1KA1AKqXs0KgSjzW89e0HhpIAEuoAa3KLqxlwxSQF8mCLaFgz2UR9ncXTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nhan.nguyen.trong\\Documents\\DemoProjectAngularWithAPI\\webapi\\StoreManagement.csproj",
+  "projectFilePath": "C:\\Users\\nhan.nguyen.trong\\Documents\\DemoProjectAngularWithAPI\\webapi\\StoreManagement\\StoreManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nhan.nguyen.trong\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nhan.nguyen.trong\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
