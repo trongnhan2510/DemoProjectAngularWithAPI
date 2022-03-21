@@ -1,0 +1,58 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right" style="margin: 5px 404px 5px 0px" data-toggle="modal"
+  data-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false"> <i class="fa fa-plus"></i>
+  Add New Order
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModelTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)=closeClick()>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-order [order]='order' *ngIf="ActivateAddEditEmpComp"></app-add-edit-order>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Order_ID</th>
+                <th>SaleOfDate</th>
+                <th>Total</th>
+                <th>Customer_Name</th>
+                <th>Employee_Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of listOrders">
+                <td style="width: 10%;">{{order.order_ID}}</td>
+                <td style="width: 20%;text-align: center;">{{order.saleofDate | date:"dd/MM/yyyy"}}</td>
+                <td style="width: 10%;">{{order.total}}</td>
+                <td style="width: 15%;">{{order.customer_Name}}</td>
+                <td style="width: 15%;">{{order.employee_Name}}</td>
+                <td style="width: 20%;">
+                  <button type="button" class="btn btn-primary float-right m-2" 
+                  (click)="deleteClick(order.order_ID)" ><i class="fa fa-edit"></i>
+                      Delete
+                  </button>
+                  <button type="button" class="btn btn-primary float-right m-2" 
+                      data-toggle="modal" data-target="#exampleModal"
+                      (click)="editClick(order)" data-backdrop="static" data-keyboard="false">
+                      <i class="fa fa-trash"></i>
+                          Edit
+                  </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

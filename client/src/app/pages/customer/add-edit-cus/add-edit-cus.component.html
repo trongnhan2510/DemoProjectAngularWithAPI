@@ -1,0 +1,25 @@
+<form >
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Customer Name</label>
+        <div>
+            <input type="text" class="form-control" name="customer_Name" id ="customer_Name"
+            [(ngModel)]="customer_Name" placeholder="Customer Name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Address</label>
+        <div>
+            <input type="text" class="form-control" name="address" id ="address"
+            [(ngModel)]="address" placeholder="Address">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Telephone</label>
+        <div>
+            <input type="text" class="form-control" name="telephone" id="telephone"
+             [(ngModel)]="telephone" placeholder="Telephone">
+        </div>
+    </div>
+    <button (click)="addCustomer()" *ngIf="cus.customer_ID==0" class="btn btn-primary" >Add</button>
+    <button (click)="updateCustomer()" *ngIf="cus.customer_ID!=0" class="btn btn-primary">Edit</button>
+</form>

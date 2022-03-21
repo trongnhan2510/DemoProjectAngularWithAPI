@@ -1,0 +1,14 @@
+table{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.searchString{
+    margin: 0px 0px 0px 516px;
+}
+#btnAdd{
+    margin: 5px 516px 0px 5px;
+}
+#searchStringNameCustomer{
+    border-radius: 5px;
+}

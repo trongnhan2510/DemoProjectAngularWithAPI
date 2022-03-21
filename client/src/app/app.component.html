@@ -1,0 +1,30 @@
+<div class="container">
+  <h3 class="f-flex">Angular, Web API, SQL SERVER</h3>
+  <h5 class="f-flex">Store Management</h5>
+  <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+    <ul class="navbar-nav">
+      <li class="navbar-item">
+        <button routerLink="home" class="mt-1 mr-1 btn btn-outline-primary"><i class="fa fa-home"></i> Home</button>
+      </li>
+      <li class="navbar-item">
+        <button routerLink="customer" class="m-1 btn btn-outline-primary" *ngIf="isAdmin">Customer</button>
+      </li>
+      <li class="navbar-item">
+        <button routerLink="employee" class="m-1 btn btn-outline-primary" *ngIf="isAdmin">Employee</button>
+      </li>
+      <li class="navbar-item">
+        <button routerLink="order" class="m-1 btn btn-outline-primary" *ngIf="isAdmin">Order</button>
+      </li>
+      <li class="navbar-item" *ngIf="!isLoggedIn">
+        <button routerLink="login" class="m-1 btn btn-outline-primary">Login</button>
+      </li>
+      <span *ngIf="isLoggedIn" class="infoLogout">
+        <li class="navbar-item">
+          <span style="color:red">{{username}}</span>
+          <button class="m-1 btn btn-danger" (click)="logout()"><i class="fa fa-close"></i> Logout</button>
+        </li>
+      </span>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet>

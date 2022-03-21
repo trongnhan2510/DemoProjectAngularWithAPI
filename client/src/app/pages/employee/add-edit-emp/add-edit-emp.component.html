@@ -1,0 +1,78 @@
+<form #loginForm="ngForm">
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Employee Name</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="employee_Name" id="employee_Name" [(ngModel)]="employee_Name"
+                placeholder="Employee Name" required minlength="3" maxlength="200" #name="ngModel">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+
+                <div *ngIf="name.errors?.['required']">
+                    Name is required.
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Name must be at least 3 characters long.
+                </div>
+                <div *ngIf="name.errors?.['maxlength']">
+                    Name must be at least 200 characters long.
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="chkgender" class="col-sm-4 col-form-label">Gender</label>
+        <div class="col-sm-8">
+            <input type="checkbox" class="form-control" name="chkgender" id="chkgender" [(ngModel)]="chkgender">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Address</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="address" id="address" [(ngModel)]="address"
+                placeholder="Address" required maxlength="500" minlength="3"  #isCheckAddress="ngModel">
+                <div *ngIf="isCheckAddress.invalid && (isCheckAddress.dirty || isCheckAddress.touched)" class="text-danger">
+
+                    <div *ngIf="isCheckAddress.errors?.['required']">
+                        Address is required.
+                    </div>
+                    <div *ngIf="isCheckAddress.errors?.['minlength']">
+                        Address must be at least 3 characters long.
+                    </div>
+                    <div *ngIf="isCheckAddress.errors?.['maxlength']">
+                        Address must be at least 500 characters long.
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">Telephone</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="telePhone" id="telePhone" [(ngModel)]="telePhone"
+                placeholder="Telephone" required maxlength="15" minlength="9" #isCheckTelephone="ngModel">
+                <div *ngIf="isCheckTelephone.invalid && (isCheckTelephone.dirty || isCheckTelephone.touched)" class="text-danger">
+
+                    <div *ngIf="isCheckTelephone.errors?.['required']">
+                        Telephone is required.
+                    </div>
+                    <div *ngIf="isCheckTelephone.errors?.['minlength']">
+                        Telephone must be at least 9 characters long.
+                    </div>
+                    <div *ngIf="isCheckTelephone.errors?.['maxlength']">
+                        Telephone must be at least 15 characters long.
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-4 col-form-label">DateOfBirth</label>
+        <div class="col-sm-8">
+            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" 
+            [(ngModel)]="dateOfBirth" placeholder="Date Of Birth" required> 
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <button (click)="addEmployee()" *ngIf="employee.employee_ID==0" class="btn btn-primary" [disabled]="loginForm.invalid">Add</button>
+        <button (click)="updateEmployee()" *ngIf="employee.employee_ID!=0" class="btn btn-primary" [disabled]="loginForm.invalid">Edit</button>
+    </div>
+
+</form>
