@@ -6351,11 +6351,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nhan.nguyen.trong\\DemoProjectAngularWithAPI\\webapi\\StoreManagement.csproj",
+      "projectUniqueName": "C:\\Users\\nhan.nguyen.trong\\Documents\\DemoProjectAngularWithAPI\\webapi\\StoreManagement.csproj",
       "projectName": "StoreManagement",
-      "projectPath": "C:\\Users\\nhan.nguyen.trong\\DemoProjectAngularWithAPI\\webapi\\StoreManagement.csproj",
+      "projectPath": "C:\\Users\\nhan.nguyen.trong\\Documents\\DemoProjectAngularWithAPI\\webapi\\StoreManagement.csproj",
       "packagesPath": "C:\\Users\\nhan.nguyen.trong\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nhan.nguyen.trong\\DemoProjectAngularWithAPI\\webapi\\obj\\",
+      "outputPath": "C:\\Users\\nhan.nguyen.trong\\Documents\\DemoProjectAngularWithAPI\\webapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
