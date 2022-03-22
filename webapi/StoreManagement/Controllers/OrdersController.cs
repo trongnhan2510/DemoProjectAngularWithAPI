@@ -47,14 +47,10 @@ namespace StoreManagement.Controllers
             {
                 var employee = _employeeRepository.GetByIDEmployee(orderView.Employee_ID);
                 if (employee == null)
-                {
                     return NotFound();
-                }
                 var customer = _customerRepository.GetByIDCustomer(orderView.Customer_ID);
                 if (customer == null)
-                {
                     return NotFound();
-                }
                 var order = new Order
                 {
                     SaleofDate = orderView.SaleofDate,

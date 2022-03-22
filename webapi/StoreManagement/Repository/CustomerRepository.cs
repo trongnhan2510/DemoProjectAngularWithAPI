@@ -17,15 +17,21 @@ namespace StoreManagement.Repository
         {
             _context = context;
         }
-        public void CreateNewCustomer(Customer customer)
+        public object CreateNewCustomer(Customer customer)
         {
-            _context.Customers.Add(customer);
+            var param = new SqlParameter[]
+            {
+                new SqlParameter("@customer_Name",customer.Customer_Name),
+                new SqlParameter("@address",customer.Address),
+                new SqlParameter("@telephone",customer.Telephone),
+            };
+            //_context.Database.ExecuteSqlRaw("EXEC sp_CreateNewCustomer @p0, @p1, @p2",parameters: new[] { customer.Customer_Name,customer.Address,customer.Telephone});
+            return _context.Database.ExecuteSqlRaw("EXEC sp_CreateNewCustomer @customer_Name, @address, @telephone", param);
         }
 
         public void DeleteCustomer(int id)
         {
-            Customer customer = _context.Customers.Find(id);
-            _context.Customers.Remove(customer);
+            _context.Database.ExecuteSqlRaw("EXEC sp_DeleteCustomer @p0",id);
         }
         public IEnumerable<Customer> GetAllCustomer()
         {
@@ -38,7 +44,15 @@ namespace StoreManagement.Repository
         }
         public void UpdateCustomer(Customer customer)
         {
-            _context.Entry(customer).State = EntityState.Modified;
+            //
+            var param = new SqlParameter[]
+            {
+                new SqlParameter("@customer_ID",customer.Customer_ID),
+                new SqlParameter("@customer_Name",customer.Customer_Name),
+                new SqlParameter("@address",customer.Address),
+                new SqlParameter("@telephone",customer.Telephone),
+            };
+            _context.Database.ExecuteSqlRaw("EXEC sp_UpdateCustomer @customer_ID,@customer_Name, @address, @telephone", param);
         }
         private bool disposed = false;
         public virtual void Dispose(bool disposing)

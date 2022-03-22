@@ -26,11 +26,11 @@ namespace StoreManagement.Controllers
         [HttpGet]
         public IActionResult GetAllCustomer(string customer_Name)
         {
+            var listCustomer = _customRepository.GetAllCustomer();
             if (customer_Name!=null)
             {
                 return Ok(_customRepository.GetByNameCustomers(customer_Name));
             }
-            var listCustomer = _customRepository.GetAllCustomer();
             return Ok(listCustomer);
         }
         [HttpGet("{id}")]
@@ -52,8 +52,8 @@ namespace StoreManagement.Controllers
                     Address = customerView.Address,
                     Telephone = customerView.Telephone
                 };
-                _customRepository.CreateNewCustomer(customer);
-                _saveRepository.Save();
+
+                var value = _customRepository.CreateNewCustomer(customer);
                 return Ok(customer);
             }
             catch (Exception)
@@ -70,7 +70,7 @@ namespace StoreManagement.Controllers
             customer.Customer_Name = customerView.Customer_Name;
             customer.Address = customerView.Address;
             customer.Telephone = customerView.Telephone;
-            _saveRepository.Save();
+            _customRepository.UpdateCustomer(customer);
             return Ok(customer);
 
         }
@@ -85,8 +85,7 @@ namespace StoreManagement.Controllers
                 if (customer.Customer_ID == item.Customer_ID)
                     return BadRequest();
             }
-            _customRepository.DeleteCustomer(id);
-            _saveRepository.Save();
+            _customRepository.DeleteCustomer(id);   
             return Ok(customer);
         }
     }

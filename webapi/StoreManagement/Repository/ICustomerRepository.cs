@@ -10,7 +10,7 @@ namespace StoreManagement.Repository
     {
         IEnumerable<Customer> GetAllCustomer();
         IEnumerable<Customer> GetByNameCustomers(string nameCus);
-        void CreateNewCustomer(Customer customer);
+        object CreateNewCustomer(Customer customer);
         Customer GetByIDCustomer(int id);
         void UpdateCustomer(Customer customer);
         void DeleteCustomer(int id);
