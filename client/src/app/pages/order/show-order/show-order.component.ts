@@ -17,31 +17,15 @@ export class ShowOrderComponent implements OnInit {
   ModelTitle!:string;
   ActivateAddEditEmpComp:Boolean = false;
   order!:any;
-  listCustomers:Customer[] = [];
-  listEmployees:Employee[] = [];
   test:any;
   constructor(private orderService: OrderService,private datePipe: DatePipe, private empService: EmployeeService, private cusService: CustomerService) { }
   ngOnInit(): void {
     this.getOrderAll();
-    this.getCusAll();
-    this.getEmpAll();
   }
   getOrderAll()
   {
     this.orderService.get().subscribe((data:any)=>{
-        this.listOrders = data as Order[];
-    });
-  }
-  getCusAll()
-  {
-    this.cusService.get().subscribe((data:any)=>{
-      this.listCustomers = data;
-    });
-  }
-  getEmpAll()
-  {
-    this.empService.get().subscribe((data:any)=>{
-      this.listEmployees = data;
+        this.listOrders = data;
     });
   }
   addClick()
@@ -50,8 +34,8 @@ export class ShowOrderComponent implements OnInit {
       order_ID:0,
       saleofDate: this.datePipe.transform(new Date(), 'yyyy-MM-dd'),
       total:1,
-      customer_ID:this.listCustomers[0].customer_ID,
-      employee_ID:this.listEmployees[0].employee_ID,
+      customer_ID: this.listOrders[0].customer.customer_ID, 
+      employee_ID: this.listOrders[0].employee.employee_ID,
     }
     this.ModelTitle="Add Order";
     this.ActivateAddEditEmpComp=true;

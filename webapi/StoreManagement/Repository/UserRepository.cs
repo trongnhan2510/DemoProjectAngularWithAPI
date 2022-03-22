@@ -55,7 +55,7 @@ namespace StoreManagement.Repository
 
         public IEnumerable<User> getUserAll()
         {
-            var listUser = _context.Users.ToList();
+            var listUser = _context.Users.AsEnumerable();
             return listUser;
         }
 

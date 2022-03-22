@@ -31,7 +31,7 @@ export class RestAPIService {
   {
     let headers = this.getHeaders();
     if (headers instanceof HttpHeaders) {
-      return this.http.get(urlAPI+'/GetByName/'+name,{headers:headers});
+      return this.http.get(urlAPI+"?customer_Name="+name,{headers:headers});
     }
     return this.http.get(urlAPI+'/'+name);
   }

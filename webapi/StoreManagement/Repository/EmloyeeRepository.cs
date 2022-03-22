@@ -24,7 +24,7 @@ namespace StoreManagement.Repository
         }
         public IEnumerable<Employee> GetAllEmployee()
         {
-            return _context.Employees.ToList();
+            return _context.Employees.AsEnumerable();
         }
 
         public Employee GetByIDEmployee(int id)

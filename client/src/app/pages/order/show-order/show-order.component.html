@@ -16,7 +16,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-add-edit-order [order]='order' *ngIf="ActivateAddEditEmpComp"></app-add-edit-order>
+        <app-add-edit-order [order]="order" *ngIf="ActivateAddEditEmpComp"></app-add-edit-order>
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@
                 <td style="width: 10%;">{{order.order_ID}}</td>
                 <td style="width: 20%;text-align: center;">{{order.saleofDate | date:"dd/MM/yyyy"}}</td>
                 <td style="width: 10%;">{{order.total}}</td>
-                <td style="width: 15%;">{{order.customer_Name}}</td>
-                <td style="width: 15%;">{{order.employee_Name}}</td>
+                <td style="width: 15%;">{{order.customer.customer_Name}}</td>
+                <td style="width: 15%;">{{order.employee.employee_Name}}</td>
                 <td style="width: 20%;">
                   <button type="button" class="btn btn-primary float-right m-2" 
                   (click)="deleteClick(order.order_ID)" ><i class="fa fa-edit"></i>

@@ -1,9 +1,9 @@
-﻿using StoreManagement.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using StoreManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace StoreManagement.Repository
 {
     public class OrderRepository : IOrderRepository, IDisposable
@@ -25,14 +25,13 @@ namespace StoreManagement.Repository
         }
         public IEnumerable<Order> GetAllOrder()
         {
-            return _context.Orders.ToList();
+            var listOrders = _context.Orders.Include(c=>c.Customer).Include("Employee").AsEnumerable();
+            return listOrders;
         }
-
         public Order GetByIDOrder(int id)
         {
             return _context.Orders.Find(id);
         }
-
         public void UpdateOrder(Order order)
         {
             _context.Entry(order).State = Microsoft.EntityFrameworkCore.EntityState.Modified;

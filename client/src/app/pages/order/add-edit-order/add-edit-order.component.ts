@@ -11,14 +11,14 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class AddEditOrderComponent implements OnInit {
   @Input() order:any;
-  order_ID!:number;
-  saleofDate!:any;
+  saleofDate:any;
   total!:number;
-  customer_ID!:number;
-  employee_ID!:number;  
-  listCustomer!:any;
-  listEmployee!:any;
-  errorMessage:any;
+  listCustomer:any;
+  listEmployee:any;
+
+  order_ID:any;
+  customer_ID:any;
+  employee_ID:any
   constructor(private orderService: OrderService, private datePipe: DatePipe, private empService: EmployeeService, private cuservice: CustomerService) { }
   ngOnInit(): void {
     this.getCustomerAll();
@@ -56,9 +56,7 @@ export class AddEditOrderComponent implements OnInit {
       customer_ID:this.customer_ID,
       employee_ID:this.employee_ID,
     };
-    if (order.saleofDate > Date.now()) {
-      this.errorMessage =  "Sale date must be less than or equal to current date";
-    }
+    console.log(order);
     this.orderService.add(order).subscribe((data:any)=>{
       alert("Add new Order Success");
       window.location.reload();
@@ -72,7 +70,6 @@ export class AddEditOrderComponent implements OnInit {
       customer_ID:this.customer_ID,
       employee_ID:this.employee_ID,
     };
-    console.log(order);
     this.orderService.update(order.order_ID,order).subscribe((data:any)=>{
       alert("Edit new Order Success");
       window.location.reload();

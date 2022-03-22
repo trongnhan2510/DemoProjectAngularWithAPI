@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
     username: null,
     password: null
   };
+  loading = false;
+  error = '';
   constructor(private loginService: LoginService, private tokenStorage: TokenStorageService) { }
   ngOnInit(): void {
   }
@@ -20,9 +22,10 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data);
         this.loginService.getUserByUsername(username).subscribe((data:any)=>{
           this.tokenStorage.saveUser(data);
+          alert('Success Login');
+          window.location.href = '';
         });
-        alert('Success');
-        window.location.href = "";
+
     });
   }
 }

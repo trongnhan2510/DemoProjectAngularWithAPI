@@ -18,6 +18,8 @@ namespace StoreManagement.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         #endregion
+
+        //Fluent API
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Customer

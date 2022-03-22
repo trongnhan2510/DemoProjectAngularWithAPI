@@ -16,10 +16,12 @@ namespace StoreManagement.Controllers
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ISaveRepository _saveRepository;
-        public EmployeesController(IEmployeeRepository employeeRepository, ISaveRepository saveRepository)
+        private readonly IOrderRepository _orderRepository;
+        public EmployeesController(IEmployeeRepository employeeRepository, ISaveRepository saveRepository, IOrderRepository orderRepository)
         {
             _employeeRepository = employeeRepository;
             _saveRepository = saveRepository;
+            _orderRepository = orderRepository;
         }
         [HttpGet]
         public IActionResult GetAllEmployee()
@@ -42,10 +44,6 @@ namespace StoreManagement.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
                 var employee = new Employee
                 {
                     Employee_Name = employeeView.Employee_Name,
@@ -60,7 +58,6 @@ namespace StoreManagement.Controllers
             }
             catch (Exception)
             {
-
                 return BadRequest();
             }
         }
@@ -83,14 +80,17 @@ namespace StoreManagement.Controllers
         public IActionResult DeleteEmployee(int id)
         {
             var employee = _employeeRepository.GetByIDEmployee(id);
-            if (employee != null)
-            {
-                _employeeRepository.DeleteEmployee(id);
-                _saveRepository.Save();
-                return Ok(employee);
-            }
-            else
+            if (employee == null)
                 return NotFound();
+            foreach (var item in _orderRepository.GetAllOrder())
+            {
+                if (employee.Employee_ID == item.Employee_ID)
+                    return BadRequest();
+            }
+            _employeeRepository.DeleteEmployee(id);
+            _saveRepository.Save();
+            return Ok(employee);
+
         }
     }
 }

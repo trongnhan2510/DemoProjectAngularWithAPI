@@ -22,16 +22,10 @@ export class ShowEmpComponent implements OnInit {
   constructor(private employeeService: EmployeeService,private orderService: OrderService, private datePipe: DatePipe) { }
   ngOnInit(): void {
     this.getEmpAll();
-    this.getAllOrder();
   }
   getEmpAll() {
     this.employeeService.get().subscribe((data: any) => {
       this.employees = data as Employee[];
-    });
-  }
-  getAllOrder() {
-    this.orderService.get().subscribe((data: any) => {
-      this.orders = data as Order[];
     });
   }
   addClick() {
@@ -57,15 +51,11 @@ export class ShowEmpComponent implements OnInit {
   }
   deleteClick(id: any) {
     if (confirm('Are you sure??') == true) {
-      for (let index = 0; index < this.orders.length; index++) {
-        if (this.orders[index].employee_ID == id) {
-          alert("Có khóa ngoại");
-          return;
-        }
-      }
       this.employeeService.delete(id).subscribe((data: any) => {
         alert("Success");
         this.getEmpAll();
+      },(error:any)=>{
+        alert("có khóa ngoại")
       });
     }
   }

@@ -28,21 +28,7 @@ namespace StoreManagement.Controllers
         public IActionResult getOrderAll()
         {
             var listOrders = _orderRepository.GetAllOrder();
-            var list = from o in listOrders
-                       join c in _customerRepository.GetAllCustomer() on o.Customer_ID equals c.Customer_ID
-                       join e in _employeeRepository.GetAllEmployee() on o.Employee_ID equals e.Employee_ID
-                       select new
-                       {
-                           o.Order_ID,
-                           o.SaleofDate,
-                           o.Total,
-                           o.Customer_ID,
-                           o.Employee_ID,
-                           o.Customer.Customer_Name,
-                           o.Employee.Employee_Name
-                            
-                       };
-            return Ok(list);
+            return Ok(listOrders);
         }
         [HttpGet("{id}")]
         public IActionResult getByIDOrder(int id)
@@ -59,10 +45,6 @@ namespace StoreManagement.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
                 var employee = _employeeRepository.GetByIDEmployee(orderView.Employee_ID);
                 if (employee == null)
                 {
@@ -86,7 +68,6 @@ namespace StoreManagement.Controllers
             }
             catch (Exception)
             {
-                
                 return BadRequest();
             }
         }
@@ -95,10 +76,7 @@ namespace StoreManagement.Controllers
         {
             var order = _orderRepository.GetByIDOrder(id);
             if (order == null)
-            {
                 return NotFound();
-                
-            }
             order.SaleofDate = orderView.SaleofDate;
             order.Total = orderView.Total;
             order.Customer_ID = orderView.Customer_ID;
@@ -111,9 +89,7 @@ namespace StoreManagement.Controllers
         {
             var order = _orderRepository.GetByIDOrder(id);
             if (order == null)
-            {
                 return NotFound();
-            }
             _orderRepository.DeleteOrder(id);
             _saveRepository.Save();
             return Ok(order);

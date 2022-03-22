@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="" class="col-sm-3">Customer_ID</label>
+        <label for="" class="col-sm-3">Customer_Name</label>
         <div class="col-sm-9">
             <select (change)="selectChangeHandlerCus($event)">
                 <option *ngFor="let customer of listCustomer" value="{{customer.customer_ID}}" 
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="" class="col-sm-3">Employee_ID</label>
+        <label for="" class="col-sm-3">Employee_Name</label>
         <div class="col-sm-9">
             <select (change)="selectChangeHandlerEmp($event)">
                 <option *ngFor="let employee of listEmployee" value="{{employee.employee_ID}}" 

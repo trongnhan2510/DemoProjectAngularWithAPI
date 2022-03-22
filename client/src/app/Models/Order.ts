@@ -6,8 +6,8 @@ export class Order{
     total:number;
     customer_ID:number;
     employee_ID:number;
-    customer_Name:any;
-    employee_Name:any
+    customer:any;
+    employee:any
     role!: Role;
     token?: string;
     /**
@@ -22,7 +22,7 @@ export class Order{
            this.total =total;
            this.customer_ID =customer_ID;
            this.employee_ID =employee_ID;
-           this.customer_Name = customer;
-           this.employee_Name = employee;
+           this.customer = customer;
+           this.employee = employee;
     }
 }

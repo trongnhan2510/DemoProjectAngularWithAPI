@@ -6,9 +6,11 @@
             <div class="col-sm-9">
                 <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
                     #username="ngModel" />
-                <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
-                    Username is required!
-                </div>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                        <div *ngIf="username.errors?.['required']">
+                            Username is required
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="form-group row">
@@ -16,9 +18,11 @@
             <div class="col-sm-9">
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
                     #password="ngModel" />
-                <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-                    Password is required!
-                </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                        <div *ngIf="password.errors?.['required']">
+                            Password is required
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="form-group">

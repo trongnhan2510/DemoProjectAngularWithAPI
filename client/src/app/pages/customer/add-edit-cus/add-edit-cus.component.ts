@@ -14,8 +14,6 @@ export class AddEditCusComponent implements OnInit {
   customer_Name!:string;
   address!:string;
   telephone!:string;
-  index:number = 0;
-  
   constructor( private customerService: CustomerService) { 
   }
   ngOnInit(): void {

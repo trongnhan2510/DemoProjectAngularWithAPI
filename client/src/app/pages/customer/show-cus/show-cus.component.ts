@@ -17,23 +17,16 @@ ActivateAddEditCusComp:Boolean = false;
 cus:any;
 searchStringNameCustomer:string = "";
 isLogin:any;
-constructor(private customerService: CustomerService,private orderService:OrderService){
+constructor(private customerService: CustomerService){
 
 }
   ngOnInit(): void {
     this.getCusAll();
-    this.getOrderAll();
   }
   getCusAll()
   {
     this.customerService.get().subscribe((data:any)=>{
       this.customers = data as Customer[];
-    });
-  }
-  getOrderAll()
-  {
-    this.orderService.get().subscribe((data:any)=>{
-      this.orders = data as Order[];
     });
   }
   addClick()
@@ -59,16 +52,13 @@ constructor(private customerService: CustomerService,private orderService:OrderS
   }
   deleteClick(id:any)
   {
-    if (confirm('Are you sure??')==true) {
-      for (let index = 0; index < this.orders.length; index++) {
-        if (this.orders[index].customer_ID == id) {
-            alert("Có khóa ngoại"); 
-            return;         
-        }
-      }
-      this.customerService.delete(id).subscribe((data:any)=>{
+    if (confirm("Are you sure!")) {
+      this.customerService.delete(id).subscribe(()=>{
+        alert("Success")
         this.getCusAll();
-      });
+      },() =>{
+        alert("Có khóa ngoại");
+     });
     }
   }
   clickSearchString()
@@ -77,7 +67,8 @@ constructor(private customerService: CustomerService,private orderService:OrderS
       this.getCusAll();
     else
     {
-      this.customerService.getByName(this.searchStringNameCustomer).subscribe((data:any)=>{
+      this.customerService.getByName(this.searchStringNameCustomer).subscribe(
+        (data:any)=>{
         this.customers = data as Customer[];
       });
     }
