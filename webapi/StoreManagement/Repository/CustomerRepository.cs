@@ -38,7 +38,7 @@ namespace StoreManagement.Repository
         }
         public void UpdateCustomer(Customer customer)
         {
-            _context.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(customer).State = EntityState.Modified;
         }
         private bool disposed = false;
         public virtual void Dispose(bool disposing)

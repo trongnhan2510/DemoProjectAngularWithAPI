@@ -38,9 +38,7 @@ namespace StoreManagement.Controllers
         {
             var customer = _customRepository.GetByIDCustomer(id);
             if (customer == null)
-            {
                 return NotFound();
-            }
             return Ok(customer);
         }
         [HttpPost]
@@ -48,10 +46,6 @@ namespace StoreManagement.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
                 var customer = new Customer
                 {
                     Customer_Name = customerView.Customer_Name,

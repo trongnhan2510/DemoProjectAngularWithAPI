@@ -25,6 +25,7 @@ namespace StoreManagement.Repository
         }
         public IEnumerable<Order> GetAllOrder()
         {
+            //Eager loading
             var listOrders = _context.Orders.Include(c=>c.Customer).Include("Employee").AsEnumerable();
             return listOrders;
         }
